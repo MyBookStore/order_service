@@ -9,8 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-.idea
-.gitignore
+.idea/workspace.xml
 
 ## Specific to RubyMotion:
 .dat*
