@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  # resources :orders, :only => [:index] do
+    post 'orders/new' => 'orders#create'
+    get '/orders' => 'orders#search'
+    get 'orders/:id' => 'orders#get'
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
