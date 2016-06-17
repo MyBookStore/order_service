@@ -1,12 +1,15 @@
 class OrdersController < ApplicationController
+
   def create
-    @order = Order.create(order_params)
-    render :show, status: 201
+    order_p = order_params.to_hash.merge("status" =>  "confirmed")
+    @order = Order.create(order_p)
+    @order.save!
+    render json:@order, status: 201
   end
 
   def get
-    @order = Order.where(params[:id]).first
-    render :show, status: 200
+    @order = Order.where(id: params[:id])
+    render json: @order, status: 200
   end
 
   def search
@@ -19,6 +22,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.permit(:customer_id, :book_id, :status)
+    params.permit(:customer_id, :book_id)
   end
 end
